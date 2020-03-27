@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+export CONTECO_LABEL="backup.package - ModEco"
+export CONTECO_DESCRIPTION="Backup of all repositories of the package images of the ModEco ecosystem."
+
+export CONTECO_TYPE="backup"
+export CONTECO_NAME="package"
+export CONTECO_TAG="20200327"
+
+export CONTECO_BASE="external.bash:5.0.9"
+export CONTECO_BUILD="image-base"

@@ -1,0 +1,40 @@
+##### BEGIN image.base/Dockerfile/image-header #####
+FROM vcwebio/modeco.image.wrapper AS wrapper
+FROM vcwebio/modeco.external.bash:5.0.9 AS base
+##### END image.base/Dockerfile/image-header #####
+
+##### BEGIN image.base/Dockerfile/conteco #####
+COPY --from=wrapper /conteco/ /conteco/
+ENTRYPOINT ["/conteco/bin/image/wrapper/entrypoint"]
+##### END image.base/Dockerfile/conteco #####
+
+##### BEGIN image/Dockerfile/conteco #####
+COPY ./conteco/ /conteco/
+RUN chmod -R +x /conteco/bin && rm -rf /conteco/repo
+COPY ./ /conteco/repo/
+##### END image/Dockerfile/conteco #####
+
+##### BEGIN image/Dockerfile/build-instructions #####
+ENV CONTECO_ENTRYPOINT "/entrypoint-artifactory.sh"
+##### END image/Dockerfile/build-instructions #####
+
+##### BEGIN image.base/Dockerfile/env-labels-footer #####
+ENV CONTECO_REALM="vcwebio" \
+    CONTECO_ECOSYSTEM="modeco" \
+    CONTECO_TYPE="backup" \
+    CONTECO_NAME="package" \
+    CONTECO_TAG="20200327" \
+    CONTECO_BASE="external.bash:5.0.9" \
+    CONTECO_BUILD="image-base"
+LABEL io.vcweb.schema-version="1.0" \
+      io.vcweb.realm="vcwebio" \
+      io.vcweb.ecosystem="modeco" \
+      io.vcweb.type="backup" \
+      io.vcweb.name="package" \
+      io.vcweb.tag="20200327" \
+      io.vcweb.base="external.bash:5.0.9" \
+      io.vcweb.build="image-base" \
+      io.vcweb.label="backup.package - ModEco" \
+      io.vcweb.description="Backup of all repositories of the package images of the ModEco ecosystem." \
+      io.vcweb.docker.cmd.help="docker run vcwebio/modeco.backup.package --help" 
+##### END image.base/Dockerfile/env-labels-footer #####
