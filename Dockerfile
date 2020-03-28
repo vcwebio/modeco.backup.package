@@ -2,11 +2,6 @@
 FROM ${CONTECO_REGISTRY}vcwebio/conteco.$CONTECO_BASE AS base
 ##### END modeco/Dockerfile/image-header #####
 
-##### BEGIN image.base/Dockerfile/conteco #####
-COPY --from=wrapper /conteco/ /conteco/
-ENTRYPOINT ["/conteco/bin/image/wrapper/entrypoint"]
-##### END image.base/Dockerfile/conteco #####
-
 ##### BEGIN image/Dockerfile/conteco #####
 COPY ./conteco/ /conteco/
 RUN chmod -R +x /conteco/bin && rm -rf /conteco/repo
