@@ -7,5 +7,5 @@ export CONTECO_TYPE="backup"
 export CONTECO_NAME="package"
 export CONTECO_TAG="20200327"
 
-export CONTECO_BASE="external.bash:5.0.9"
-export CONTECO_BUILD="image-base"
+export CONTECO_BASE="image.wrapper"
+export CONTECO_BUILD="modeco"

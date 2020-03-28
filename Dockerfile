@@ -1,7 +1,6 @@
-##### BEGIN image.base/Dockerfile/image-header #####
-FROM $CONTECO_REGISTRY$CONTECO_REALM_RUNTIME/$CONTECO_ECOSYSTEM_RUNTIME.image.wrapper AS wrapper
-FROM $CONTECO_REGISTRY$CONTECO_REALM_RUNTIME/$CONTECO_ECOSYSTEM_RUNTIME.$CONTECO_BASE AS base
-##### END image.base/Dockerfile/image-header #####
+##### BEGIN modeco/Dockerfile/image-header #####
+FROM ${CONTECO_REGISTRY}vcwebio/conteco.$CONTECO_BASE AS base
+##### END modeco/Dockerfile/image-header #####
 
 ##### BEGIN image.base/Dockerfile/conteco #####
 COPY --from=wrapper /conteco/ /conteco/
@@ -36,5 +35,5 @@ LABEL $CONTECO_LABELSPACE.schema-version="1.0" \
       $CONTECO_LABELSPACE.build="$CONTECO_BUILD" \
       $CONTECO_LABELSPACE.label="$CONTECO_LABEL" \
       $CONTECO_LABELSPACE.description="$CONTECO_DESCRIPTION" \
-      $CONTECO_LABELSPACE.docker.cmd.help="docker run ${CONTECO_REALM_RUNTIME}/${CONTECO_ECOSYSTEM_RUNTIME}.${CONTECO_TYPE}.${CONTECO_NAME} --help" 
+      $CONTECO_LABELSPACE.docker.cmd.help="docker run ${CONTECO_REALM_RUNTIME}/${CONTECO_ECOSYSTEM_RUNTIME}.${CONTECO_TYPE}.${CONTECO_NAME} --help"
 ##### END image.base/Dockerfile/env-labels-footer #####
