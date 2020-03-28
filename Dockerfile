@@ -1,5 +1,5 @@
 ##### BEGIN modeco/Dockerfile/image-header #####
-FROM ${CONTECO_REGISTRY}vcwebio/conteco.$CONTECO_BASE AS base
+FROM ${CONTECO_REGISTRY}${CONTECO_REALM_RUNTIME}/conteco.$CONTECO_BASE AS base
 ##### END modeco/Dockerfile/image-header #####
 
 ##### BEGIN image/Dockerfile/conteco #####
